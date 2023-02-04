@@ -1,24 +1,34 @@
+import { useState } from "react";
 import { FormRowContainer } from "./styles";
 
 interface FormRowProps {
-  htmlFor: string;
   label: string;
-  id: string;
   type: string;
   autoComplete?: string;
+  setValueOnChange: (value: string) => void;
 }
 
 export const FormRow = ({
-  htmlFor,
   label,
-  id,
   type,
   autoComplete,
+  setValueOnChange,
 }: FormRowProps) => {
+  const [inputValue, setInputValue] = useState<string>("");
+
   return (
     <FormRowContainer>
-      <label htmlFor={htmlFor}>{label}</label>
-      <input id={id} type={type} autoComplete={autoComplete} />
+      <label htmlFor={type}>{label}</label>
+      <input
+        id={type}
+        type={type}
+        autoComplete={autoComplete}
+        value={inputValue}
+        onChange={(e) => {
+          setInputValue(e.target.value);
+          setValueOnChange(e.target.value);
+        }}
+      />
     </FormRowContainer>
   );
 };

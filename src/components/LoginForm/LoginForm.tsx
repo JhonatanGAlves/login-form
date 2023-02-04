@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { FormButton } from "../FormButton/FormButton";
 import { FormRow } from "../FormRow/FormRow";
 import { ErrorMessage, LoginFormContainer, LoginFormContent } from "./styles";
 
 export const LoginForm = () => {
+  const [emailValue, setEmailValue] = useState<string>("");
+  const [passwordValue, setPasswordValue] = useState<string>("");
+
   return (
     <LoginFormContainer>
       <LoginFormContent>
@@ -10,20 +14,22 @@ export const LoginForm = () => {
         {/* Coloque a mensagem de erro de login na div abaixo. Mostre a div somente se houver uma mensagem de erro. */}
         <ErrorMessage />
         <FormRow
-          htmlFor="email"
           label="Email"
-          id="email"
           type="email"
-          autoComplete="off"
+          autoComplete="on"
+          setValueOnChange={(email: string) => setEmailValue(email)}
         />
         <FormRow
-          htmlFor="password"
           label="Password"
-          id="password"
           type="password"
-          autoComplete="on"
+          autoComplete="off"
+          setValueOnChange={(password: string) => setPasswordValue(password)}
         />
-        <FormButton textButton="Login" />
+        <FormButton
+          textButton="Login"
+          email={emailValue}
+          password={passwordValue}
+        />
       </LoginFormContent>
     </LoginFormContainer>
   );
