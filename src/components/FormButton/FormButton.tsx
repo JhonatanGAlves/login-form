@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FormButtonContainer } from "./styles";
 import { login } from "../../utils/utils";
 
@@ -14,9 +15,14 @@ export const FormButton = ({
   password,
   disabled,
 }: FormButtonProps) => {
+  const [loading, setLoading] = useState<boolean>(false);
+
   return (
     <FormButtonContainer>
-      <button onClick={() => login(email, password)} disabled={disabled}>
+      <button
+        onClick={() => login(email, password, setLoading)}
+        disabled={disabled || loading}
+      >
         {textButton}
       </button>
     </FormButtonContainer>
