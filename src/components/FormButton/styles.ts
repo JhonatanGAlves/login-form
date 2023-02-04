@@ -2,8 +2,11 @@ import styled from "styled-components";
 
 export const FormButtonContainer = styled.div`
   button {
-    display: block;
-    padding: 0.6em 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 0.6rem 1.2rem;
     width: 100%;
 
     border: 1px solid transparent;

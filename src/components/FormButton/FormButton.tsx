@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FormButtonContainer } from "./styles";
 import { login } from "../../utils/utils";
+import { Loading } from "../Loading/Loading";
 
 interface FormButtonProps {
   textButton: string;
@@ -23,6 +24,7 @@ export const FormButton = ({
         onClick={() => login(email, password, setLoading)}
         disabled={disabled || loading}
       >
+        {loading && <Loading />}
         {textButton}
       </button>
     </FormButtonContainer>
