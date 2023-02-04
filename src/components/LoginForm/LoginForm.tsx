@@ -7,6 +7,8 @@ export const LoginForm = () => {
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
 
+  const loginButtonDisabled = !emailValue || passwordValue.length < 6;
+
   return (
     <LoginFormContainer>
       <LoginFormContent>
@@ -29,6 +31,7 @@ export const LoginForm = () => {
           textButton="Login"
           email={emailValue}
           password={passwordValue}
+          disabled={loginButtonDisabled}
         />
       </LoginFormContent>
     </LoginFormContainer>

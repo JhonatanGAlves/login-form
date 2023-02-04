@@ -2,23 +2,32 @@ import styled from "styled-components";
 
 export const FormButtonContainer = styled.div`
   button {
-    border-radius: 8px;
-    border: 1px solid transparent;
+    display: block;
     padding: 0.6em 1.2em;
-    font-size: 1em;
+    width: 100%;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    font-size: 1rem;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
+
     cursor: pointer;
+
     transition: border-color 0.25s;
+
     background-color: #f9f9f9;
-    display: block;
-    width: 100%;
-  }
-  button:hover {
-    background: #f3f3f3;
-  }
-  button:active {
-    border-color: #646cff;
+
+    :disabled {
+      cursor: not-allowed;
+    }
+
+    :hover:not([disabled]) {
+      background: #f3f3f3;
+    }
+    :active:not([disabled]) {
+      border-color: #646cff;
+    }
   }
 `;
