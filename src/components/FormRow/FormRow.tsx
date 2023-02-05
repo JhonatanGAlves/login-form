@@ -1,12 +1,6 @@
 import { useState } from "react";
+import { FormRowProps } from "../../types/types";
 import { FormRowContainer } from "./styles";
-
-interface FormRowProps {
-  label: string;
-  type: string;
-  autoComplete?: string;
-  setValueOnChange: (value: string) => void;
-}
 
 export const FormRow = ({
   label,

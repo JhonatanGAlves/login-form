@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ErrorMessageTypes } from "../../types/types";
 import { FormButton } from "../FormButton/FormButton";
 import { FormRow } from "../FormRow/FormRow";
 import { GlobalNotification } from "../GlobalNotification/GlobalNotification";
@@ -7,7 +8,8 @@ import { ErrorMessage, LoginFormContainer, LoginFormContent } from "./styles";
 export const LoginForm = () => {
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
-  const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false);
+  const [showErrorMessage, setShowErrorMessage] =
+    useState<ErrorMessageTypes>(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
 
   const loginButtonDisabled = !emailValue || passwordValue.length < 6;
@@ -29,7 +31,7 @@ export const LoginForm = () => {
         <LoginFormContent>
           <h1>Login Form 🐞</h1>
           {showErrorMessage && (
-            <ErrorMessage>E-mail or password wrong.</ErrorMessage>
+            <ErrorMessage>{showErrorMessage.message}</ErrorMessage>
           )}
           <FormRow
             label="Email"
@@ -45,8 +47,7 @@ export const LoginForm = () => {
           />
           <FormButton
             textButton="Login"
-            email={emailValue}
-            password={passwordValue}
+            loginValues={{ email: emailValue, password: passwordValue }}
             disabled={loginButtonDisabled}
             setShowErrorMessage={setShowErrorMessage}
             setShowSuccessMessage={setShowSuccessMessage}

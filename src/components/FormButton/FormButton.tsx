@@ -2,20 +2,11 @@ import { useState } from "react";
 import { FormButtonContainer } from "./styles";
 import { login } from "../../utils/utils";
 import { Loading } from "../Loading/Loading";
-
-interface FormButtonProps {
-  textButton: string;
-  email: string;
-  password: string;
-  disabled: boolean;
-  setShowErrorMessage: (error: boolean) => void;
-  setShowSuccessMessage: (success: boolean) => void;
-}
+import { ErrorMessageTypes, FormButtonProps } from "../../types/types";
 
 export const FormButton = ({
   textButton,
-  email,
-  password,
+  loginValues,
   disabled,
   setShowErrorMessage,
   setShowSuccessMessage,
@@ -26,14 +17,13 @@ export const FormButton = ({
     <FormButtonContainer>
       <button
         onClick={() => {
-          login(
-            email,
-            password,
-            setLoading,
-            setShowErrorMessage,
-            setShowSuccessMessage
-          );
-          setShowErrorMessage(false);
+          setLoading(true);
+          setShowErrorMessage(null);
+
+          login(loginValues)
+            .then(() => setShowSuccessMessage(true))
+            .catch((error: ErrorMessageTypes) => setShowErrorMessage(error))
+            .finally(() => setLoading(false));
         }}
         disabled={disabled || loading}
       >

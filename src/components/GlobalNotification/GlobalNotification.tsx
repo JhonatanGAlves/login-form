@@ -4,10 +4,7 @@ import {
 } from "./styles";
 import CheckCircle from "phosphor-react/src/icons/CheckCircle";
 import X from "phosphor-react/src/icons/X";
-
-interface GlobalNotificationProps {
-  onClick: () => void;
-}
+import { GlobalNotificationProps } from "../../types/types";
 
 export const GlobalNotification = ({ onClick }: GlobalNotificationProps) => {
   return (
