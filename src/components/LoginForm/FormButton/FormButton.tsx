@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { FormButtonContainer } from "./styles";
-import { login } from "../../utils/utils";
-import { Loading } from "../Loading/Loading";
-import { ErrorMessageTypes, FormButtonProps } from "../../types/types";
+import { login } from "../../../utils/utils";
+import { Loading } from "../../Loading/Loading";
+import { ErrorMessageTypes, FormButtonProps } from "../../../types/types";
 
 export const FormButton = ({
   textButton,

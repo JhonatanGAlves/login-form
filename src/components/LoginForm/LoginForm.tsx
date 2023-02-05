@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ErrorMessageTypes } from "../../types/types";
-import { FormButton } from "../FormButton/FormButton";
-import { FormRow } from "../FormRow/FormRow";
+import { FormButton } from "./FormButton/FormButton";
+import { FormRow } from "./FormRow/FormRow";
 import { GlobalNotification } from "../GlobalNotification/GlobalNotification";
 import { ErrorMessage, LoginFormContainer, LoginFormContent } from "./styles";
 
@@ -25,7 +25,10 @@ export const LoginForm = () => {
   return (
     <>
       {showSuccessMessage && (
-        <GlobalNotification onClick={() => setShowSuccessMessage(false)} />
+        <GlobalNotification
+          message="Login successful."
+          onClick={() => setShowSuccessMessage(false)}
+        />
       )}
       <LoginFormContainer>
         <LoginFormContent>

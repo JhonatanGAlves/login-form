@@ -23,5 +23,6 @@ export interface FormButtonProps {
 }
 
 export interface GlobalNotificationProps {
+  message: string;
   onClick: () => void;
 }
