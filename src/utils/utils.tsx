@@ -2,7 +2,8 @@ export function login(
   email: string,
   password: string,
   setLoading: (loading: boolean) => void,
-  setShowErrorMessage: (error: boolean) => void
+  setShowErrorMessage: (error: boolean) => void,
+  setShowSuccessMessage: (success: boolean) => void
 ) {
   const delay = (0.7 + Math.random() * 2) * 1000;
 
@@ -12,6 +13,7 @@ export function login(
     setTimeout(function () {
       if (password === "password123" && !!email) {
         resolve();
+        setShowSuccessMessage(true);
       } else {
         reject({ message: "e-mail or password wrong." });
         setShowErrorMessage(true);

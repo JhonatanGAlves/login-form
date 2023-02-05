@@ -18,6 +18,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     * {
+        /* display: contents; */
         margin: 0;
         padding: 0;
         box-sizing: border-box;

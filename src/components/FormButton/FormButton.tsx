@@ -9,6 +9,7 @@ interface FormButtonProps {
   password: string;
   disabled: boolean;
   setShowErrorMessage: (error: boolean) => void;
+  setShowSuccessMessage: (success: boolean) => void;
 }
 
 export const FormButton = ({
@@ -17,6 +18,7 @@ export const FormButton = ({
   password,
   disabled,
   setShowErrorMessage,
+  setShowSuccessMessage,
 }: FormButtonProps) => {
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -24,7 +26,13 @@ export const FormButton = ({
     <FormButtonContainer>
       <button
         onClick={() => {
-          login(email, password, setLoading, setShowErrorMessage);
+          login(
+            email,
+            password,
+            setLoading,
+            setShowErrorMessage,
+            setShowSuccessMessage
+          );
           setShowErrorMessage(false);
         }}
         disabled={disabled || loading}
