@@ -1,7 +1,8 @@
 export function login(
   email: string,
   password: string,
-  setLoading: (loading: boolean) => void
+  setLoading: (loading: boolean) => void,
+  setShowErrorMessage: (error: boolean) => void
 ) {
   const delay = (0.7 + Math.random() * 2) * 1000;
 
@@ -13,6 +14,7 @@ export function login(
         resolve();
       } else {
         reject({ message: "e-mail or password wrong." });
+        setShowErrorMessage(true);
       }
       setLoading(false);
     }, delay);

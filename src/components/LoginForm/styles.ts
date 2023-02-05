@@ -26,7 +26,6 @@ export const ErrorMessage = styled.div`
   border-radius: 6px;
 
   font-weight: bold;
-  text-transform: uppercase;
 
   color: red;
   background: rgba(255, 0, 0, 0.1);

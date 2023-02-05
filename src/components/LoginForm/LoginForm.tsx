@@ -6,6 +6,7 @@ import { ErrorMessage, LoginFormContainer, LoginFormContent } from "./styles";
 export const LoginForm = () => {
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
+  const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false);
 
   const loginButtonDisabled = !emailValue || passwordValue.length < 6;
 
@@ -13,8 +14,9 @@ export const LoginForm = () => {
     <LoginFormContainer>
       <LoginFormContent>
         <h1>Login Form 🐞</h1>
-        {/* Coloque a mensagem de erro de login na div abaixo. Mostre a div somente se houver uma mensagem de erro. */}
-        <ErrorMessage />
+        {showErrorMessage && (
+          <ErrorMessage>E-mail or password wrong.</ErrorMessage>
+        )}
         <FormRow
           label="Email"
           type="email"
@@ -32,6 +34,7 @@ export const LoginForm = () => {
           email={emailValue}
           password={passwordValue}
           disabled={loginButtonDisabled}
+          setShowErrorMessage={setShowErrorMessage}
         />
       </LoginFormContent>
     </LoginFormContainer>
