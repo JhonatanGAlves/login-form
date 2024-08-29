@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FormRowProps } from "../../types/types";
+import { FormRowProps } from "../../../types/types";
 import { FormRowContainer } from "./styles";
 
 export const FormRow = ({
